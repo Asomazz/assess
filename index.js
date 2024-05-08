@@ -251,23 +251,3 @@ function getMenuItemsByIngredient(menu, ingredient) {
 }
 
 console.log(getMenuItemsByIngredient(menu, "Parmesan"));
-
-const getStudentsByCourse = (course, students) => {
-  const result = students.filter((student) => {
-    const result = student.courses.filter((crs) => {
-      if (crs.includes(course)) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-
-    if (result.length != 0) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-
-  return result;
-};

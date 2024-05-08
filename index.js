@@ -169,9 +169,15 @@ console.log(countMainCourseItems(menu));
     **********/
 
 function listMenuItemNamesByCategory(menu, category) {
-  // Your code here
+  let specifiedCategory = [];
+  menu.forEach((item) => {
+    if (item.category == category) {
+      specifiedCategory.push(item.name);
+    }
+  });
+  return specifiedCategory;
 }
-// console.log(listMenuItemNamesByCategory(menu, "Main Course"));
+console.log(listMenuItemNamesByCategory(menu, "Main Course"));
 
 /**********
   Question 6: 🌶️🌶️
@@ -188,11 +194,16 @@ function listMenuItemNamesByCategory(menu, category) {
     "ingredients": ["Potatoes", "Salt", "Oil"]
   }
   **********/
-
+let lowestPrice = menu[0];
 function getCheapestMenuItem(menu) {
-  // Your code here
+  menu.forEach((item) => {
+    if (item.price <= lowestPrice.price) {
+      lowestPrice = item;
+    }
+  });
+  return lowestPrice;
 }
-// console.log(getCheapestMenuItem(menu));
+console.log(getCheapestMenuItem(menu));
 
 /**********
     Question 9: 🌶️🌶️🌶️
@@ -221,7 +232,42 @@ function getCheapestMenuItem(menu) {
     **********/
 
 function getMenuItemsByIngredient(menu, ingredient) {
-  // Your code here
+  const result = menu.filter((item) => {
+    const result = item.ingredients.filter((ing) => {
+      if (ing == ingredient) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    if (result.length != 0) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return result;
 }
 
-// console.log(getMenuItemsByIngredient(menu, "Parmesan"));
+console.log(getMenuItemsByIngredient(menu, "Parmesan"));
+
+const getStudentsByCourse = (course, students) => {
+  const result = students.filter((student) => {
+    const result = student.courses.filter((crs) => {
+      if (crs.includes(course)) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    if (result.length != 0) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  return result;
+};
